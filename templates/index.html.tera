@@ -2,7 +2,7 @@
 
 {% block content %}
   <div>
-    <li><a href="#">一覧画面</a></li>
-    <li><a href="#">新規追加</a></li>
+    <li><a href="./list">一覧画面</a></li>
+    <li><a href="./add">新規追加</a></li>
   </div>
 {% endblock content %}

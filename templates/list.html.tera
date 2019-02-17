@@ -1,0 +1,35 @@
+{% extends "base" %}
+
+{% block content %}
+  <div>
+    <div name="title">検索</div>
+    <div>タイトル : <input type="text" name="title" value="" /></div>
+    <div>説明 内容 : <input type="text" name="description" value="" /> </div>
+    <div>
+      <button type="button" name="button">検索</button>
+    </div>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>TODO ID</th>
+          <th>TODO タイトル</th>
+          <th>TODO 説明</th>
+          <th>詳細</th>
+          <th>削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>sample todo</td>
+          <td>sample discription</td>
+          <td>sample update</td>
+          <td><button>詳細</button></td>
+          <td><button>削除</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}

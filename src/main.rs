@@ -6,9 +6,9 @@ extern crate rocket_contrib;
 use rocket_contrib::templates::Template;
 
 #[derive(Serialize)]
-struct TemplateContent {
+struct TemplateContent {}
 
-}
+mod controllers;
 
 #[get("/")]
 fn index() -> Template {
@@ -18,7 +18,11 @@ fn index() -> Template {
 
 fn main() {
     rocket::ignite()
-        .mount("/", routes![index])
+        .mount("/", routes![
+            index,
+            controllers::list::list,
+            controllers::add::add
+        ])
         .attach(Template::fairing())
         .launch();
 }
