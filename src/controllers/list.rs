@@ -8,5 +8,11 @@ struct TemplateContent {}
 #[get("/list")]
 pub fn list() -> Template {
     let context = TemplateContent {};
-    Template::render("list" ,context)
+    Template::render("list", context)
+}
+
+#[get("/search?<title>&<description>")]
+pub fn search(title : String, description : String) -> Template {
+    let context = TemplateContent {};
+    Template::render("list", context)
 }

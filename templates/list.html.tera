@@ -1,14 +1,16 @@
 {% extends "base" %}
 
 {% block content %}
-  <div>
-    <div name="title">検索</div>
-    <div>タイトル : <input type="text" name="title" value="" /></div>
-    <div>説明 内容 : <input type="text" name="description" value="" /> </div>
+  <form action="./search" method="get">
     <div>
-      <button type="button" name="button">検索</button>
+      <div name="title">検索</div>
+      <div>タイトル : <input type="text" name="title" value="" /></div>
+      <div>説明 内容 : <input type="text" name="description" value="" /> </div>
+      <div>
+        <input type="submit" value="検索" />
+      </div>
     </div>
-  </div>
+  </form>
   <div>
     <table>
       <thead>

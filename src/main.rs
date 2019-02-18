@@ -21,6 +21,7 @@ fn main() {
         .mount("/", routes![
             index,
             controllers::list::list,
+            controllers::list::search,
             controllers::add::add
         ])
         .attach(Template::fairing())
