@@ -22,7 +22,7 @@ fn main() {
             index,
             controllers::list::list,
             controllers::list::search,
-            controllers::add::add
+            controllers::add::add_todo
         ])
         .attach(Template::fairing())
         .launch();
