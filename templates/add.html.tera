@@ -2,18 +2,20 @@
 
 {% block content %}
   <div name="title">新規追加画面</div>
-  <div>
+  <form class="" action="./add_todo" method="post">
     <div>
-      TODO タイトル : <input type="text" name="title" value="" />
+      <div>
+        TODO タイトル : <input type="text" name="title" value="" />
+      </div>
+      <div>
+        TODO 説明 : <textarea name="description" rows="8" cols="80"></textarea>
+      </div>
+      <div>
+        画像登録 : <input type="file" name="image" />
+      </div>
+      <div>
+        <button>登録</button>
+      </div>
     </div>
-    <div>
-      TODO 説明 : <textarea name="description" rows="8" cols="80"></textarea>
-    </div>
-    <div>
-      画像登録 : <input type="file" name="image" />
-    </div>
-    <div>
-      <button>登録</button>
-    </div>
-  </div>
+  </form>
 {% endblock content %}
