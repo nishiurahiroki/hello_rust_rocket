@@ -11,7 +11,7 @@
         TODO 説明 : <textarea name="description" rows="8" cols="80"></textarea>
       </div>
       <div>
-        画像登録 : <input type="file" name="image" />
+        <!-- 画像登録 : <input type="file" name="image" /> -->
       </div>
       <div>
         <button>登録</button>

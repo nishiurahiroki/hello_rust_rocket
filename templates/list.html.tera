@@ -23,14 +23,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>sample todo</td>
-          <td>sample discription</td>
-          <td>sample update</td>
-          <td><button>詳細</button></td>
-          <td><button>削除</button></td>
-        </tr>
+        {% for todo in todos %}
+          <tr>
+            <td>{{todo.id}}</td>
+            <td>{{todo.title}}</td>
+            <td>{{todo.description}}</td>
+            <td><button>詳細</button></td>
+            <td><button>削除</button></td>
+          </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
