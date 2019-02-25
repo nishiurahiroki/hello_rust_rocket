@@ -12,16 +12,16 @@ pub fn add(todo : Todo) {
 
 pub fn get_todos(title : Option<String>, description : Option<String>) -> Vec<Todo> {
     let query_where = {
-        let mut result = Some("".to_string());
+        let mut result = Some(" WHERE ".to_string());
 
         result = match title {
-            Some(title) => Some(format!(" {} title = {} ", result.unwrap().to_string(), title)),
-            None        => None
+            Some(title) => Some(format!(" {} title = %'{}'% ", result.unwrap().to_string(), title)),
+            None        => Some(format!(" {} title = %'{}'% ", result.unwrap().to_string(), "".to_string()))
         };
 
         result = match description {
-            Some(description) => Some(format!(" {} description = {} ", result.unwrap().to_string(), description)),
-            None              => None
+            Some(description) => Some(format!(" AND {} description = %'{}'% ", result.unwrap().to_string(), description)),
+            None              => Some(format!(" AND {} description = %'{}'% ", result.unwrap().to_string(), "".to_string()))
         };
 
         result
@@ -29,7 +29,10 @@ pub fn get_todos(title : Option<String>, description : Option<String>) -> Vec<To
 
     let connection = get_connection();
     let todos : Vec<Todo> = connection
-                                .query("SELECT id, title, description FROM todo", &[])
+                                .query(
+                                    &format!(" SELECT id, title, description FROM todo {} ", query_where.unwrap()),
+                                    &[]
+                                )
                                 .unwrap()
                                 .iter()
                                 .map(|row| {
