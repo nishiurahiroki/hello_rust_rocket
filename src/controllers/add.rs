@@ -3,11 +3,13 @@ use rocket_contrib::templates::Template;
 
 use serde_derive::Serialize;
 
-use hello_rust_rocket::repositories::todo_repository::add;
+use hello_rust_rocket::repositories::todo_repository;
 use hello_rust_rocket::entity::todo::Todo;
 
 #[derive(Serialize)]
-struct TemplateContent {}
+pub struct TemplateContent {
+    pub todos : Vec<Todo>
+}
 
 #[derive(FromForm)]
 pub struct TodoFromForm {
@@ -17,20 +19,27 @@ pub struct TodoFromForm {
 
 #[get("/add")]
 pub fn initialize() -> Template {
-    let context = TemplateContent{};
-    Template::render("add", context)
+    let todos : Vec<Todo> = Vec::new();
+    Template::render("add", TemplateContent{ todos })
 }
 
 #[post("/add_todo", data = "<todoFromForm>")]
 pub fn add_todo(todoFromForm : Form<TodoFromForm>) -> Template {
     let todo : TodoFromForm = todoFromForm.into_inner();
-    add(
+    todo_repository::add(
         Todo {
             id : Some(-1),
             title : Some(todo.title),
             description : Some(todo.description)
         }
     );
-    let context = TemplateContent{};
-    Template::render("add", context)
+
+    let search_condition_title : Option<String> = None;
+    let search_condition_description : Option<String> = None;
+    Template::render("list", TemplateContent {
+        todos : todo_repository::get_todos(
+            search_condition_title,
+            search_condition_description
+        )
+    })
 }

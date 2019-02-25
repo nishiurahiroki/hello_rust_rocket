@@ -20,7 +20,7 @@ fn main() {
     rocket::ignite()
         .mount("/", routes![
             index,
-            controllers::list::list,
+            controllers::list::initialize,
             controllers::list::search,
             controllers::add::initialize,
             controllers::add::add_todo
