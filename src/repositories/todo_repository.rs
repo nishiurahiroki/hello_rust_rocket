@@ -15,13 +15,13 @@ pub fn get_todos(title : Option<String>, description : Option<String>) -> Vec<To
         let mut result = Some(" WHERE ".to_string());
 
         result = match title {
-            Some(title) => Some(format!(" {} title = %'{}'% ", result.unwrap().to_string(), title)),
-            None        => Some(format!(" {} title = %'{}'% ", result.unwrap().to_string(), "".to_string()))
+            Some(value) => Some(format!(" {} title LIKE '%{}%' ", result.unwrap().to_string(), value)),
+            None        => Some(format!(" {} title LIKE '%{}%' ", result.unwrap().to_string(), "".to_string()))
         };
 
         result = match description {
-            Some(description) => Some(format!(" AND {} description = %'{}'% ", result.unwrap().to_string(), description)),
-            None              => Some(format!(" AND {} description = %'{}'% ", result.unwrap().to_string(), "".to_string()))
+            Some(value) => Some(format!(" {} AND description LIKE '%{}%' ", result.unwrap().to_string(), value)),
+            None        => Some(format!(" {} AND description LIKE '%{}%' ", result.unwrap().to_string(), "".to_string()))
         };
 
         result
