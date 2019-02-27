@@ -10,27 +10,11 @@ pub fn add(todo : Todo) {
         ).unwrap();
 }
 
-pub fn get_todos(title : Option<String>, description : Option<String>) -> Vec<Todo> {
-    let query_where = {
-        let mut result = Some(" WHERE ".to_string());
-
-        result = match title {
-            Some(value) => Some(format!(" {} title LIKE '%{}%' ", result.unwrap().to_string(), value)),
-            None        => Some(format!(" {} title LIKE '%{}%' ", result.unwrap().to_string(), "".to_string()))
-        };
-
-        result = match description {
-            Some(value) => Some(format!(" {} AND description LIKE '%{}%' ", result.unwrap().to_string(), value)),
-            None        => Some(format!(" {} AND description LIKE '%{}%' ", result.unwrap().to_string(), "".to_string()))
-        };
-
-        result
-    };
-
+pub fn get_todos(title : String, description : String) -> Vec<Todo> {
     let connection = get_connection();
     let todos : Vec<Todo> = connection
                                 .query(
-                                    &format!(" SELECT id, title, description FROM todo {} ", query_where.unwrap()),
+                                    &format!("SELECT id, title, description FROM todo WHERE title LIKE '%{}%' AND description LIKE '%{}%' ", title.to_string(), description.to_string()),
                                     &[]
                                 )
                                 .unwrap()

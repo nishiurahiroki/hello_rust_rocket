@@ -8,7 +8,9 @@ use hello_rust_rocket::entity::todo::Todo;
 
 #[derive(Serialize)]
 pub struct TemplateContent {
-    pub todos : Vec<Todo>
+    pub todos : Vec<Todo>,
+    pub search_title : String,
+    pub search_description : String
 }
 
 #[derive(FromForm)]
@@ -20,7 +22,9 @@ pub struct TodoFromForm {
 #[get("/add")]
 pub fn initialize() -> Template {
     let todos : Vec<Todo> = Vec::new();
-    Template::render("add", TemplateContent{ todos })
+    let search_title = "".to_string();
+    let search_description = "".to_string();
+    Template::render("add", TemplateContent{ todos, search_title, search_description })
 }
 
 #[post("/add_todo", data = "<todoFromForm>")]
@@ -34,12 +38,12 @@ pub fn add_todo(todoFromForm : Form<TodoFromForm>) -> Template {
         }
     );
 
-    let search_condition_title : Option<String> = None;
-    let search_condition_description : Option<String> = None;
     Template::render("list", TemplateContent {
         todos : todo_repository::get_todos(
-            search_condition_title,
-            search_condition_description
-        )
+            "".to_string(),
+            "".to_string()
+        ),
+        search_title : "".to_string(),
+        search_description : "".to_string()
     })
 }

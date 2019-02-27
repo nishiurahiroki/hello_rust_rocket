@@ -14,12 +14,10 @@ struct TemplateContent {
 
 #[get("/list")]
 pub fn initialize() -> Template {
-    let search_condition_title : Option<String> = None;
-    let search_condition_description : Option<String> = None;
     Template::render("list", TemplateContent {
         todos : todo_repository::get_todos(
-            search_condition_title,
-            search_condition_description
+            "".to_string(),
+            "".to_string()
         ),
         search_title : "".to_string(),
         search_description : "".to_string()
@@ -28,14 +26,12 @@ pub fn initialize() -> Template {
 
 #[get("/search?<title>&<description>")]
 pub fn search(title : String, description : String) -> Template {
-    let search_condition_title : Option<String> = Some(title);
-    let search_condition_description : Option<String> = Some(description);
     Template::render("list", TemplateContent {
         todos : todo_repository::get_todos(
-            search_condition_title.clone(),
-            search_condition_description.clone()
+            title.clone(),
+            description.clone()
         ),
-        search_title : search_condition_title.unwrap().to_string(),
-        search_description : search_condition_description.unwrap().to_string()
+        search_title : title,
+        search_description : description
     })
 }
