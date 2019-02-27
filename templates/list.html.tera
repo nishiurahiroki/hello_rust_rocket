@@ -4,8 +4,8 @@
   <form action="./search" method="get">
     <div>
       <div name="title">検索</div>
-      <div>タイトル : <input type="text" name="title" value="" /></div>
-      <div>説明 内容 : <input type="text" name="description" value="" /> </div>
+      <div>タイトル : <input type="text" name="title" value="{{search_title}}" /></div>
+      <div>説明 内容 : <input type="text" name="description" value="{{search_description}}" /> </div>
       <div>
         <input type="submit" value="検索" />
       </div>
