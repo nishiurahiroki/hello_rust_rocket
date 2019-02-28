@@ -29,3 +29,11 @@ pub fn get_todos(title : String, description : String) -> Vec<Todo> {
                                 .collect();
     todos
 }
+
+pub fn delete(todo_id : String) {
+    let connection = get_connection();
+    connection.execute(
+        "DELETE FROM todo WHERE id = $1",
+        &[&todo_id.parse::<i32>().unwrap()]
+    );
+}

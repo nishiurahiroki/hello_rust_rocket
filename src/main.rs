@@ -4,6 +4,7 @@
 #[macro_use] extern crate serde_derive;
 extern crate rocket_contrib;
 use rocket_contrib::templates::Template;
+use rocket_contrib::serve::StaticFiles;
 
 #[derive(Serialize)]
 struct TemplateContent {}
@@ -22,9 +23,11 @@ fn main() {
             index,
             controllers::list::initialize,
             controllers::list::search,
+            controllers::list::delete,
             controllers::add::initialize,
             controllers::add::add_todo
         ])
+        .mount("/public", StaticFiles::from("static"))
         .attach(Template::fairing())
         .launch();
 }

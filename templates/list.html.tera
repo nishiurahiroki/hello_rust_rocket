@@ -1,7 +1,7 @@
 {% extends "base" %}
 
 {% block content %}
-  <form action="./search" method="get">
+  <form action="./search" id="searchForm" method="get">
     <div>
       <div name="title">検索</div>
       <div>タイトル : <input type="text" name="title" value="{{search_title}}" /></div>
@@ -10,6 +10,8 @@
         <input type="submit" value="検索" />
       </div>
     </div>
+
+    <input type="hidden" id="target_todo_id" name="target_todo_id" value="test_id" />
   </form>
   <div>
     <table>
@@ -28,11 +30,12 @@
             <td>{{todo.id}}</td>
             <td>{{todo.title}}</td>
             <td>{{todo.description}}</td>
-            <td><button>詳細</button></td>
-            <td><button>削除</button></td>
+            <td><button data-target-todo-id="{{todo.id}}" name="detail_button">詳細</button></td>
+            <td><button data-target-todo-id="{{todo.id}}" name="delete_button">削除</button></td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
+  <script type="text/javascript" src="./public/js/list.js"></script>
 {% endblock content %}
