@@ -11,3 +11,7 @@ pub mod repositories {
 pub mod entity {
     pub mod todo;
 }
+
+pub mod template_contents {
+    pub mod list;
+}

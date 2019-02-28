@@ -5,13 +5,7 @@ use serde_derive::Serialize;
 
 use hello_rust_rocket::repositories::todo_repository;
 use hello_rust_rocket::entity::todo::Todo;
-
-#[derive(Serialize)]
-pub struct TemplateContent {
-    pub todos : Vec<Todo>,
-    pub search_title : String,
-    pub search_description : String
-}
+use hello_rust_rocket::template_contents::list::TemplateContent;
 
 #[derive(FromForm)]
 pub struct TodoFromForm {

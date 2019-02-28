@@ -4,13 +4,7 @@ use serde_derive::Serialize;
 
 use hello_rust_rocket::entity::todo::Todo;
 use hello_rust_rocket::repositories::todo_repository;
-
-#[derive(Serialize)]
-struct TemplateContent {
-    todos : Vec<Todo>,
-    search_title : String,
-    search_description : String
-}
+use hello_rust_rocket::template_contents::list::TemplateContent;
 
 #[get("/list")]
 pub fn initialize() -> Template {
