@@ -1,0 +1,24 @@
+{% extends "base" %}
+
+{% block content %}
+<div name="title">詳細画面</div>
+<div>
+  <div>
+    TODO ID : 1
+  </div>
+  <div>
+    TODO タイトル : sampleタイトル
+  </div>
+  <div>
+    TODO 詳細説明 :
+    <pre>
+    </pre>
+  </div>
+  <!-- <div>
+    登録画像 : <img src="https://placehold.jp/150x150.png"  />
+  </div> -->
+</div>
+<div>
+  <button>編集</button>
+</div>
+{% endblock content %}

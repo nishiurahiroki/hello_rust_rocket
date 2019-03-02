@@ -25,7 +25,8 @@ fn main() {
             controllers::list::search,
             controllers::list::delete,
             controllers::add::initialize,
-            controllers::add::add_todo
+            controllers::add::add_todo,
+            controllers::detail::initialize
         ])
         .mount("/public", StaticFiles::from("static"))
         .attach(Template::fairing())

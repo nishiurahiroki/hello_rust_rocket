@@ -1,13 +1,11 @@
 use rocket::request::Form;
 use rocket_contrib::templates::Template;
 
-use serde_derive::Serialize;
-
 use hello_rust_rocket::entity::todo::Todo;
 use hello_rust_rocket::repositories::todo_repository;
 use hello_rust_rocket::template_contents::list::TemplateContent;
 
-#[derive(FromForm, Clone)]
+#[derive(FromForm)]
 pub struct ListFromForm {
     pub title : String,
     pub description : String,
@@ -40,16 +38,16 @@ pub fn search(title : String, description : String) -> Template {
 
 #[post("/delete", data = "<listFromForm>")]
 pub fn delete(listFromForm : Form<ListFromForm>) -> Template {
-    let listFromForm = &listFromForm.clone();
+    let listForm : ListFromForm = listFromForm.into_inner();
 
-    todo_repository::delete(listFromForm.target_todo_id.to_string());
+    todo_repository::delete(listForm.target_todo_id);
 
     Template::render("list", TemplateContent {
         todos : todo_repository::get_todos(
-            listFromForm.title.to_string(),
-            listFromForm.description.to_string()
+            listForm.title.to_string(),
+            listForm.description.to_string()
         ),
-        search_title : listFromForm.title.to_string(),
-        search_description : listFromForm.description.to_string()
+        search_title : listForm.title.to_string(),
+        search_description : listForm.description.to_string()
     })
 }
