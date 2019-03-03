@@ -8,8 +8,14 @@ use hello_rust_rocket::template_contents::list::TemplateContent;
 #[derive(FromForm)]
 pub struct ListFromForm {
     pub title : String,
-    pub description : String,
-    pub target_todo_id : String
+    pub description : String
+}
+
+#[derive(FromForm)]
+pub struct RefineForm {
+    pub target_todo_id : String,
+    pub title : String,
+    pub description : String
 }
 
 #[get("/list")]
@@ -36,18 +42,17 @@ pub fn search(title : String, description : String) -> Template {
     })
 }
 
-#[post("/delete", data = "<listFromForm>")]
-pub fn delete(listFromForm : Form<ListFromForm>) -> Template {
-    let listForm : ListFromForm = listFromForm.into_inner();
-
-    todo_repository::delete(listForm.target_todo_id);
+#[post("/delete", data = "<refineForm>")]
+pub fn delete(refineForm : Form<RefineForm>) -> Template {
+    let refineForm : RefineForm = refineForm.into_inner();
+    todo_repository::delete(refineForm.target_todo_id);
 
     Template::render("list", TemplateContent {
         todos : todo_repository::get_todos(
-            listForm.title.to_string(),
-            listForm.description.to_string()
+            refineForm.title.to_string(),
+            refineForm.description.to_string()
         ),
-        search_title : listForm.title.to_string(),
-        search_description : listForm.description.to_string()
+        search_title : refineForm.title.to_string(),
+        search_description : refineForm.description.to_string()
     })
 }

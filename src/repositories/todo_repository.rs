@@ -10,6 +10,31 @@ pub fn add(todo : Todo) {
         ).unwrap();
 }
 
+pub fn find_by_id(id : i32) -> Option<Todo> {
+    let connection = get_connection();
+    let todos : Vec<Todo> = connection
+                                .query(
+                                    "SELECT * FROM todo WHERE = $1",
+                                    &[&id]
+                                )
+                                .unwrap()
+                                .iter()
+                                .map(|row| {
+                                    Todo {
+                                        id : row.get("id"),
+                                        title : row.get("title"),
+                                        description : row.get("description")
+                                    }
+                                })
+                                .collect();
+
+    if 0 == todos.len() {
+        None
+    } else {
+        Some(todos[0].clone())
+    }
+}
+
 pub fn get_todos(title : String, description : String) -> Vec<Todo> {
     let connection = get_connection();
     let todos : Vec<Todo> = connection

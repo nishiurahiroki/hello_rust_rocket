@@ -4,13 +4,13 @@
 <div name="title">詳細画面</div>
 <div>
   <div>
-    TODO ID : 1
+    TODO ID : {{id}}
   </div>
   <div>
-    TODO タイトル : sampleタイトル
+    TODO タイトル : {{title}}
   </div>
   <div>
-    TODO 詳細説明 :
+    TODO 詳細説明 : {{description}}
     <pre>
     </pre>
   </div>

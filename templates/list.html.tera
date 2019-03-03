@@ -10,8 +10,6 @@
         <input type="submit" value="検索" />
       </div>
     </div>
-
-    <input type="hidden" id="target_todo_id" name="target_todo_id" value="test_id" />
   </form>
   <div>
     <table>
@@ -37,5 +35,10 @@
       </tbody>
     </table>
   </div>
+
+  <form id="refineForm" action="" method="get">
+    <input type="hidden" id="target_todo_id" name="target_todo_id" value="" />
+  </form>
+
   <script type="text/javascript" src="./public/js/list.js"></script>
 {% endblock content %}

@@ -3,17 +3,19 @@ document
   .forEach(button => button.addEventListener('click', e => {
     document.getElementById('target_todo_id').value = e.target.dataset.targetTodoId
 
-    const searchForm = document.getElementById('searchForm')
-    searchForm.action = './delete'
-    searchForm.method = 'post'
-    searchForm.submit()
+    const form = document.getElementById('refineForm')
+    form.action = './delete'
+    form.method = 'post'
+    form.submit()
   }))
 
 document
   .getElementsByName('detail_button')
   .forEach(button => button.addEventListener('click', e => {
-    const searchForm = document.getElementById('searchForm')
-    searchForm.action = `./detail?todo_id=${e.target.dataset.targetTodoId}`
-    searchForm.method = 'get'
-    searchForm.submit()
+    document.getElementById('target_todo_id').value = e.target.dataset.targetTodoId
+
+    const form = document.getElementById('refineForm')
+    form.action = `./detail`
+    form.method = 'get'
+    form.submit()
   }))
