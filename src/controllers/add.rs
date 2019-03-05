@@ -5,20 +5,25 @@ use serde_derive::Serialize;
 
 use hello_rust_rocket::repositories::todo_repository;
 use hello_rust_rocket::entity::todo::Todo;
-use hello_rust_rocket::template_contents::list::TemplateContent;
+use hello_rust_rocket::template_contents::list;
+use hello_rust_rocket::template_contents::add;
 
 #[derive(FromForm)]
 pub struct TodoFromForm {
     pub title : String,
-    pub description : String
+    pub description : String,
+    pub edit_todo_id : Option<String>
 }
 
 #[get("/add")]
 pub fn initialize() -> Template {
-    let todos : Vec<Todo> = Vec::new();
-    let search_title = "".to_string();
-    let search_description = "".to_string();
-    Template::render("add", TemplateContent{ todos, search_title, search_description })
+    Template::render("add", add::TemplateContent{
+        register_action : "./add_todo".to_string(),
+        edit_todo_title : "".to_string(),
+        edit_todo_description : "".to_string(),
+        edit_todo_id : None,
+        submit_button_label : "新規登録".to_string()
+    })
 }
 
 #[post("/add_todo", data = "<todoFromForm>")]
@@ -32,7 +37,7 @@ pub fn add_todo(todoFromForm : Form<TodoFromForm>) -> Template {
         }
     );
 
-    Template::render("list", TemplateContent {
+    Template::render("list", list::TemplateContent {
         todos : todo_repository::get_todos(
             "".to_string(),
             "".to_string()

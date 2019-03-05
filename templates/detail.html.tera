@@ -1,24 +1,28 @@
 {% extends "base" %}
 
 {% block content %}
-<div name="title">詳細画面</div>
-<div>
+<form action="./edit_initialize" method="get">
+  <div name="title">詳細画面</div>
   <div>
-    TODO ID : {{id}}
+    <div>
+      TODO ID : {{id}}
+    </div>
+    <div>
+      TODO タイトル : {{title}}
+    </div>
+    <div>
+      TODO 詳細説明 : {{description}}
+      <pre>
+      </pre>
+    </div>
+    <!-- <div>
+      登録画像 : <img src="https://placehold.jp/150x150.png"  />
+    </div> -->
   </div>
   <div>
-    TODO タイトル : {{title}}
+    <input type="submit" name="editSubmit" value="編集" />
   </div>
-  <div>
-    TODO 詳細説明 : {{description}}
-    <pre>
-    </pre>
-  </div>
-  <!-- <div>
-    登録画像 : <img src="https://placehold.jp/150x150.png"  />
-  </div> -->
-</div>
-<div>
-  <button>編集</button>
-</div>
+
+  <input type="hidden" id="target_todo_id" name="target_todo_id" value="{{id}}" />
+</form>
 {% endblock content %}

@@ -2,20 +2,22 @@
 
 {% block content %}
   <div name="title">新規追加画面</div>
-  <form class="" action="./add_todo" method="post">
+  <form class="" action="{{register_action}}" method="post">
     <div>
       <div>
-        TODO タイトル : <input type="text" name="title" value="" />
+        TODO タイトル : <input type="text" name="title" value="{{edit_todo_title}}" />
       </div>
       <div>
-        TODO 説明 : <textarea name="description" rows="8" cols="80"></textarea>
+        TODO 説明 : <textarea name="description" rows="8" cols="80">{{edit_todo_description}}</textarea>
       </div>
       <div>
         <!-- 画像登録 : <input type="file" name="image" /> -->
       </div>
       <div>
-        <button>登録</button>
+        <button>{{submit_button_label}}</button>
       </div>
     </div>
+
+    <input type="hidden" name="edit_todo_id" id="edit_todo_id" value="{{edit_todo_id}}" />
   </form>
 {% endblock content %}

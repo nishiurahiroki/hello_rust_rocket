@@ -15,4 +15,5 @@ pub mod entity {
 
 pub mod template_contents {
     pub mod list;
+    pub mod add;
 }
