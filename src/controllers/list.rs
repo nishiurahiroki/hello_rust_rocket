@@ -13,9 +13,7 @@ pub struct ListFromForm {
 
 #[derive(FromForm)]
 pub struct RefineForm {
-    pub target_todo_id : String,
-    pub title : String,
-    pub description : String
+    pub target_todo_id : String
 }
 
 #[get("/list")]
@@ -49,10 +47,10 @@ pub fn delete(refineForm : Form<RefineForm>) -> Template {
 
     Template::render("list", TemplateContent {
         todos : todo_repository::get_todos(
-            refineForm.title.to_string(),
-            refineForm.description.to_string()
+            "".to_string(),
+            "".to_string()
         ),
-        search_title : refineForm.title.to_string(),
-        search_description : refineForm.description.to_string()
+        search_title : "".to_string(),
+        search_description : "".to_string()
     })
 }

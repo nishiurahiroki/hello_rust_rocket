@@ -14,7 +14,7 @@ pub fn find_by_id(id : i32) -> Option<Todo> {
     let connection = get_connection();
     let todos : Vec<Todo> = connection
                                 .query(
-                                    "SELECT * FROM todo WHERE = $1",
+                                    "SELECT * FROM todo WHERE id = $1",
                                     &[&id]
                                 )
                                 .unwrap()
