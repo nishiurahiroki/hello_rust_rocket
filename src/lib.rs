@@ -2,6 +2,7 @@ pub mod controllers {
     pub mod add {}
     pub mod list {}
     pub mod detail {}
+    pub mod edit {}
 }
 
 pub mod repositories {

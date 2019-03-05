@@ -26,6 +26,7 @@ fn main() {
             controllers::list::delete,
             controllers::add::initialize,
             controllers::add::add_todo,
+            controllers::edit::initialize,
             controllers::detail::initialize
         ])
         .mount("/public", StaticFiles::from("static"))

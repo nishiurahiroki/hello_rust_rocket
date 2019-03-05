@@ -20,7 +20,7 @@
     </div> -->
   </div>
   <div>
-    <input type="submit" name="editSubmit" value="編集" />
+    <input type="submit" value="編集" />
   </div>
 
   <input type="hidden" id="target_todo_id" name="target_todo_id" value="{{id}}" />
