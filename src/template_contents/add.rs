@@ -2,6 +2,7 @@ use serde_derive::Serialize;
 
 #[derive(Serialize)]
 pub struct TemplateContent {
+    pub page_title : String,
     pub register_action : String,
     pub edit_todo_title : String,
     pub edit_todo_description : String,

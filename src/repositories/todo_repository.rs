@@ -10,6 +10,15 @@ pub fn add(todo : Todo) {
         ).unwrap();
 }
 
+pub fn update(todo : Todo) {
+    let connection = get_connection();
+    connection
+        .execute(
+            "UPDATE todo SET title = $1, description = $2 WHERE id = $3",
+            &[&todo.title, &todo.description, &todo.id]
+        );
+}
+
 pub fn find_by_id(id : i32) -> Option<Todo> {
     let connection = get_connection();
     let todos : Vec<Todo> = connection

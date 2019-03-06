@@ -1,7 +1,7 @@
 {% extends "base" %}
 
 {% block content %}
-  <div name="title">新規追加画面</div>
+  <div name="title">{{page_title}}</div>
   <form class="" action="{{register_action}}" method="post">
     <div>
       <div>

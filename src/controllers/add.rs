@@ -18,6 +18,7 @@ pub struct TodoFromForm {
 #[get("/add")]
 pub fn initialize() -> Template {
     Template::render("add", add::TemplateContent{
+        page_title : "新規登録".to_string(),
         register_action : "./add_todo".to_string(),
         edit_todo_title : "".to_string(),
         edit_todo_description : "".to_string(),
