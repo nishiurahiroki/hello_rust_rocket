@@ -5,6 +5,9 @@ use multipart::server::save::Entries;
 use multipart::server::save::SaveResult::*;
 
 use rocket::request::Form;
+use rocket::http::{ContentType, Status};
+use rocket::response::Stream;
+use rocket::response::status::Custom;
 use rocket_contrib::templates::Template;
 
 use serde_derive::Serialize;
