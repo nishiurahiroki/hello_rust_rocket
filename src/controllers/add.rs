@@ -1,3 +1,9 @@
+extern crate multipart;
+
+use multipart::server::Multipart;
+use multipart::server::save::Entries;
+use multipart::server::save::SaveResult::*;
+
 use rocket::request::Form;
 use rocket_contrib::templates::Template;
 
