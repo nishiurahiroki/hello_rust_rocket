@@ -2,6 +2,7 @@
 
 #[macro_use] extern crate rocket;
 #[macro_use] extern crate serde_derive;
+#[macro_use] extern crate log;
 extern crate rocket_contrib;
 use rocket_contrib::templates::Template;
 use rocket_contrib::serve::StaticFiles;

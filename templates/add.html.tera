@@ -2,7 +2,7 @@
 
 {% block content %}
   <div name="title">{{page_title}}</div>
-  <form class="" action="{{register_action}}" method="post">
+  <form class="" action="{{register_action}}" method="post" enctype="multipart/form-data">
     <div>
       <div>
         TODO タイトル : <input type="text" name="title" value="{{edit_todo_title}}" />
@@ -11,7 +11,7 @@
         TODO 説明 : <textarea name="description" rows="8" cols="80">{{edit_todo_description}}</textarea>
       </div>
       <div>
-        <!-- 画像登録 : <input type="file" name="image" /> -->
+        画像登録 : <input type="file" name="image" />
       </div>
       <div>
         <button>{{submit_button_label}}</button>

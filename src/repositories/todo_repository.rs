@@ -5,8 +5,8 @@ pub fn add(todo : Todo) {
     let connection = get_connection();
     connection
         .execute(
-            "INSERT INTO todo(title, description) VALUES($1, $2)",
-            &[&todo.title.unwrap(), &todo.description.unwrap()]
+            "INSERT INTO todo(title, description, image) VALUES($1, $2, $3)",
+            &[&todo.title.unwrap(), &todo.description.unwrap(), &todo.image.unwrap()]
         ).unwrap();
 }
 
@@ -32,7 +32,8 @@ pub fn find_by_id(id : i32) -> Option<Todo> {
                                     Todo {
                                         id : row.get("id"),
                                         title : row.get("title"),
-                                        description : row.get("description")
+                                        description : row.get("description"),
+                                        image : Some(Vec::new())
                                     }
                                 })
                                 .collect();
@@ -57,7 +58,8 @@ pub fn get_todos(title : String, description : String) -> Vec<Todo> {
                                     Todo {
                                         id : row.get("id"),
                                         title : row.get("title"),
-                                        description : row.get("description")
+                                        description : row.get("description"),
+                                        image : row.get("image")
                                     }
                                 })
                                 .collect();

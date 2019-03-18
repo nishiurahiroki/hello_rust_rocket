@@ -4,5 +4,6 @@ use serde_derive::Serialize;
 pub struct Todo {
     pub id : Option<i32>,
     pub title : Option<String>,
-    pub description : Option<String>
+    pub description : Option<String>,
+    pub image : Option<Vec<u8>>
 }

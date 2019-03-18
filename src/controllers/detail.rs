@@ -11,7 +11,8 @@ pub fn initialize(target_todo_id : i32) -> Template {
         detail::TemplateContent {
             id : todo.id.unwrap(),
             title : todo.title.unwrap(),
-            description : todo.description.unwrap()
+            description : todo.description.unwrap(),
+            image : todo.image
         }
     )
 }

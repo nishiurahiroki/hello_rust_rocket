@@ -15,9 +15,10 @@
       <pre>
       </pre>
     </div>
-    <!-- <div>
+    <div>
       登録画像 : <img src="https://placehold.jp/150x150.png"  />
-    </div> -->
+      {{image}}
+    </div>
   </div>
   <div>
     <input type="submit" value="編集" />

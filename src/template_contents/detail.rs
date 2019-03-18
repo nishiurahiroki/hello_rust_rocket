@@ -4,5 +4,6 @@ use serde_derive::Serialize;
 pub struct TemplateContent {
     pub id : i32,
     pub title : String,
-    pub description : String
+    pub description : String,
+    pub image : Option<Vec<u8>>
 }

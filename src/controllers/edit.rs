@@ -36,7 +36,8 @@ pub fn edit_todo(editTodoForm : Form<EditTodoForm>) -> Template {
         Todo {
             id : Some(editTodoForm.edit_todo_id),
             title : Some(editTodoForm.title.clone()),
-            description : Some(editTodoForm.description.clone())
+            description : Some(editTodoForm.description.clone()),
+            image : Some(Vec::new())
         }
     );
     Template::render(
@@ -44,7 +45,8 @@ pub fn edit_todo(editTodoForm : Form<EditTodoForm>) -> Template {
         detail::TemplateContent {
             id : editTodoForm.edit_todo_id,
             title : editTodoForm.title,
-            description : editTodoForm.description
+            description : editTodoForm.description,
+            image : Some(Vec::new())
         }
     )
 }
